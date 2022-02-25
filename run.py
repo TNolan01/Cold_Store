@@ -76,7 +76,6 @@ class Dimensions:
         """
         Function to calculate surface area of the room
         """
-        list = []
         m5.dist = (((length * height)*2) + ((width * height)*2)) + (length * width) 
         m6.dist = (length * width)
         print ("Total surface area of roof and walls is", m5.dist, "metres sqaured")
@@ -95,7 +94,7 @@ def temperature(prompt):
 
 
 
-def insulation(prompt):
+def insulation(self):
     panel_type = [{'Type': '80mm PIR Panel', 'U_Value': 0.26},
                 {'Type': '100mm PIR Panel', 'U_Value': 0.21},
                 {'Type': '150mm PIR Panel', 'U_Value': 0.15},
@@ -108,7 +107,7 @@ def insulation(prompt):
 
     while True:
         try:
-            panel = int(input(prompt))
+            panel = int(input(self))
         except ValueError:
             print("Please select an option between 1 and 4")
             continue
@@ -126,6 +125,24 @@ def insulation(prompt):
             u_valve = panel_type[3]["U_Value"]
         return u_valve
         break
+
+class Heat_load:
+    
+    def __init__(self, source, heat_load):
+        self.source = source
+        self.heat_load = heat_load
+
+
+    def product_calc():
+        print("Please enter quantity of product entering room in kg: ")
+        product_qty = Dimensions.validator(input)
+        product_temp = temperature('Please enter temperature of product in ºC: ')
+        product_heat_load = ((product_qty * 1.9)/3600) + (product_qty * (product_temp - room_temp)/3600)
+        return abs(product_heat_load)
+
+    
+    def people():
+        print
 
 
 
@@ -145,7 +162,8 @@ Dimensions.room('')
 """ print (m4.dist) """
 room_temp = temperature("Please enter temperature of the room in °C : ") 
 panel = insulation('Please select panel size from which room is constructed.')
-print(panel)
+product_heat_load = Heat_load.product_calc()
+print(product_heat_load)
 
 
 
