@@ -43,8 +43,8 @@ class Dimensions:
         response from user.
     
         """
-        yes = {'yes'}
-        no = {'no'}
+        yes = {'yes', 'y'}
+        no = {'no', 'n'}
         while True:
             try:
                 value = input(prompt)
@@ -94,7 +94,7 @@ def temperature(prompt):
 
 
 
-def insulation(self):
+def insulation(prompt):
     panel_type = [{'Type': '80mm PIR Panel', 'U_Value': 0.26},
                 {'Type': '100mm PIR Panel', 'U_Value': 0.21},
                 {'Type': '150mm PIR Panel', 'U_Value': 0.15},
@@ -104,10 +104,9 @@ def insulation(self):
     print(f'2. {panel_type[1]["Type"]}')
     print(f'3. {panel_type[2]["Type"]}')
     print(f'4. {panel_type[3]["Type"]}')
-
     while True:
         try:
-            panel = int(input(self))
+            panel = int(input(prompt))
         except ValueError:
             print("Please select an option between 1 and 4")
             continue
@@ -126,6 +125,28 @@ def insulation(self):
         return u_valve
         break
 
+
+def floor(prompt):
+    yes = {'yes', 'y'}
+    no = {'no', 'n'}
+    while True:
+        try:
+            value = input(prompt)
+        except ValueError:
+            print("Please enter yes or no.")
+            continue
+        if value in yes:
+            value = 0.28
+            return value
+        elif value in no:
+            value = 1.0
+            return value
+        else:
+            print("Has the room got floor insulation.")
+            print("Please enter yes or no.")
+
+
+
 class Heat_load:
     
     def __init__(self, source, heat_load):
@@ -137,17 +158,48 @@ class Heat_load:
         print("Please enter quantity of product entering room in kg: ")
         product_qty = Dimensions.validator(input)
         product_temp = temperature('Please enter temperature of product in ºC: ')
-        product_heat_load = ((product_qty * 1.9)/3600) + (product_qty * (product_temp - room_temp)/3600)
-        return abs(product_heat_load)
+        hl1.heat_load = ((product_qty * 1.9)/3600) + (product_qty * (product_temp - room_temp)/3600)
+        return abs(hl1.heat_load)
 
     
     def people():
-        print
-
-
-
+        print('Are there any people working in this room ?\n '
+                'Please enter yes or no.')
+        yes = {'yes', 'y'}
+        no = {'no', 'n'}
+        while True:
+            try:
+                value = input()
+            except ValueError:
+                print("Please enter yes or no.")
+                continue
+            if value in yes:
+                while True:
+                    try:
+                        value = int(input("How many people are working in the room ? "))
+                    except ValueError:
+                        print("Please enter a numerical value for quantity of people.")
+                        continue
+                    if value < 0:
+                        print("The value must be a whole, positive number.")
+                        continue
+                    else:
+                        hl2.heat_load = (value * 6 * 270)/1000
+                        return hl2.heat_load
+                        break
+            elif value in no:
+                hl2.heat_load = 1.0
+                return hl2.heat_load
+                break
+            else:
+                print("Please enter yes or no. ")
     
 
+    def air_changes():
+        print('Please enter approximate number of\n'
+                'in a 24 hour period. ')
+        hl3.heat_load = Dimensions.validator(input)
+        
 
 """
 Start of program.
@@ -158,12 +210,18 @@ m3 = Dimensions("Height", 0.0)
 m4 = Dimensions("Volume", 0.0)
 m5 = Dimensions("Area",0.0)
 m6 = Dimensions("Floor", 0.0)
+hl1 = Heat_load("Product", 0.0)
+hl2 = Heat_load("People", 0.0)
+hl3 = Heat_load("Air", 0.0)
+
 Dimensions.room('')
 """ print (m4.dist) """
 room_temp = temperature("Please enter temperature of the room in °C : ") 
 panel = insulation('Please select panel size from which room is constructed.')
-product_heat_load = Heat_load.product_calc()
-print(product_heat_load)
+hl1.heat_load = Heat_load.product_calc()
+hl2.heat_load = Heat_load.people()
+hl3.heat_load = Heat_load.air_changes()
+print(hl3.heat_load)
 
 
 
