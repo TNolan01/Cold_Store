@@ -3,8 +3,7 @@ class Dimensions:
         self.measurement = measurement
         self.dist = dist
            
-    
-    
+        
     def validator(self):
         while True:
             try:
@@ -18,6 +17,7 @@ class Dimensions:
             else:
                 return value
     
+
     def room(self):
         """
         function to intake length, width and height of the 
@@ -95,6 +95,43 @@ def temperature(prompt):
 
 
 
+def insulation(prompt):
+    panel_type = [{'Type': '80mm PIR Panel', 'U_Value': 0.26},
+                {'Type': '100mm PIR Panel', 'U_Value': 0.21},
+                {'Type': '150mm PIR Panel', 'U_Value': 0.15},
+                {'Type': '200mm PIR Panel', 'U_Value': 0.10}]
+       
+    print(f'1. {panel_type[0]["Type"]}')
+    print(f'2. {panel_type[1]["Type"]}')
+    print(f'3. {panel_type[2]["Type"]}')
+    print(f'4. {panel_type[3]["Type"]}')
+
+    while True:
+        try:
+            panel = int(input(prompt))
+        except ValueError:
+            print("Please select an option between 1 and 4")
+            continue
+        if panel not in range (1, 5):
+            print("Please select an option between 1 and 4, your number is outside of range.")
+            continue
+        elif panel == 1:
+            u_valve = panel_type[0]["U_Value"]
+        elif panel == 2:
+            u_valve = panel_type[1]["U_Value"]
+        elif panel == 3:
+            u_valve = panel_type[2]["U_Value"]
+        else:
+            panel == 4
+            u_valve = panel_type[3]["U_Value"]
+        return u_valve
+        break
+
+
+
+    
+
+
 """
 Start of program.
 """
@@ -106,7 +143,9 @@ m5 = Dimensions("Area",0.0)
 m6 = Dimensions("Floor", 0.0)
 Dimensions.room('')
 """ print (m4.dist) """
-room_temp = temperature("Please enter temperature of the room in °C : ")
+room_temp = temperature("Please enter temperature of the room in °C : ") 
+panel = insulation('Please select panel size from which room is constructed.')
+print(panel)
 
 
 
