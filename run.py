@@ -220,8 +220,13 @@ class Transmission:
         return abs(value)
 
 
-
-
+    def total_duty():
+        """
+        Function to add all heat loads together and then calculate the required refrigeration duty.
+        """
+        total_duty = ((hl1.heat_load + hl2.heat_load + hl3.heat_load + transmission_load) * 1.2) / 14  # add all heat loads, add 20% and divide by 14hours, which is average run time in 24hour day
+        return round(total_duty, 2)
+        print("The kilowatt duty, kW, of the required refrigeration\n" "equipment necessary for this cold store is\n", round(total_duty, 2),"kW")
 """
 Start of program.
 """
@@ -244,6 +249,9 @@ hl1.heat_load = Heat_load.product_calc()
 hl2.heat_load = Heat_load.people()
 hl3.heat_load = Heat_load.air_changes()
 transmission_load = Transmission.room_load_calc()
+print(transmission_load)
+total_duty = Transmission.total_duty()
+print(total_duty)
 
 
 
