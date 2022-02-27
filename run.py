@@ -2,11 +2,17 @@ import colorama
 from colorama import Fore
 
 class Dimensions:
+    """
+    Class to handle the measurements of the cold room.
+    """
     def __init__(self, measurement, dist):
         self.measurement = measurement
         self.dist = dist
 
     def validator(self):
+        """
+        Function to validate a positive numerical input.
+        """
         while True:
             try:
                 value = float(input())
@@ -14,7 +20,7 @@ class Dimensions:
                 print(Fore.RED + "Sorry, please enter a numerical value.\n" + Fore.WHITE)
                 continue
             if value < 0:
-                print("Sorry, you must enter a positive numerical value.\n")
+                print(Fore.RED + "Sorry, you must enter a positive numerical value.\n" + Fore.WHITE)
                 continue
             else:
                 return value
@@ -25,16 +31,16 @@ class Dimensions:
         cold room. This will calculate volume and surface area
         also.
         """
-        print("Please enter the length of the coldroom in metres : ")
+        print(Fore.BLUE + "Please enter the length of the coldroom in metres : " + Fore.WHITE)
         m1.dist = Dimensions.validator(self)
-        print("Please enter the Width of the coldroom in metres : ")
+        print(Fore.BLUE + "Please enter the Width of the coldroom in metres : " + Fore.WHITE)
         m2.dist = Dimensions.validator(self)
-        print("Please enter the height of the coldroom in metres : ")
+        print(Fore.BLUE + "Please enter the height of the coldroom in metres : " + Fore.WHITE)
         m3.dist = Dimensions.validator(self)
-        print("The", m1.measurement, "you entered is", m1.dist, "metres.")
-        print("The", m2.measurement, "you entered is", m2.dist, "metres.")
-        print("The", m3.measurement, "you entered is", m3.dist, "metres.")
-        Dimensions.yes_no("Are entered values correct, please enter yes or no ? \n")
+        print(Fore.BLUE + "The", m1.measurement, "you entered is" + Fore.WHITE, m1.dist, Fore.BLUE + "metres." + Fore.WHITE)
+        print(Fore.BLUE + "The", m2.measurement, "you entered is" + Fore.WHITE, m2.dist, Fore.BLUE + "metres." + Fore.WHITE)
+        print(Fore.BLUE + "The", m3.measurement, "you entered is" + Fore.WHITE, m3.dist, Fore.BLUE + "metres." + Fore.WHITE)
+        Dimensions.yes_no(Fore.BLUE + "Are entered values correct, please enter yes or no ? \n" + Fore.WHITE)
         return
 
     def yes_no(prompt):
@@ -49,19 +55,19 @@ class Dimensions:
             try:
                 value = input(prompt)
             except ValueError:
-                print("That aint right")
+                print(Fore.RED + "That aint right" + Fore.WHITE)
                 continue
-            if value in yes:
-                print("Calculating volume.....")
-                m4.dist = Dimensions.volume(m1.dist, m2.dist, m3.dist)
-                print("Calculated volume......", m4.dist, "metres cubed.")
-                Dimensions.area(m1.dist, m2.dist, m3.dist)
+            if value.lower() in yes:
+                print(Fore.BLUE + "Calculating volume....." + Fore.WHITE)
+                m4.dist = Dimensions.volume(m1.dist, m2.dist, m3.dist) # call to function to calculate room volume
+                print(Fore.BLUE + "Calculated volume......" + Fore.WHITE, m4.dist, Fore.BLUE + "metres cubed." + Fore.WHITE)
+                Dimensions.area(m1.dist, m2.dist, m3.dist) # call to function to calculate surface area of the room
                 break
-            elif value in no:
-                Dimensions.room("Please input correct measurements.")
+            elif value.lower() in no:
+                Dimensions.room(Fore.BLUE + "Please input correct measurements." + Fore.WHITE)
                 break
             else:
-                print("Please respond with a yes or no answer.")
+                print(Fore.RED + "Please respond with a yes or no answer." + Fore.WHITE)
 
     def volume(length, height, width):
         """
@@ -74,29 +80,35 @@ class Dimensions:
         """
         Function to calculate surface area of the room
         """
-        m5.dist = (((length * height) * 2) + ((width * height) * 2)) + (length * width)
-        m6.dist = length * width
-        print("Total surface area of roof and walls is", m5.dist, "metres sqaured")
-        print("Total surface area of the floor is", m6.dist, "metres squared")
+        m5.dist = (((length * height) * 2) + ((width * height) * 2)) + (length * width) # area of ceiling and walls
+        m6.dist = length * width # area of floor space
+        print(Fore.BLUE + "Total surface area of roof and walls is" + Fore.WHITE, round(m5.dist, 2), Fore.BLUE + "metres sqaured")
+        print("Total surface area of the floor is" + Fore.WHITE, round(m6.dist, 2), Fore.BLUE + "metres squared" + Fore.WHITE)
 
 
 def temperature(prompt):
+    """
+    Function to check value is acceptable temperature value.
+    """
     while True:
         try:
             value = float(input(prompt))
         except ValueError:
-            print("Sorry, I do not understand...")
-            print("Please enter a numerical value.")
+            print(Fore.RED + "Sorry, I do not understand...")
+            print("Please enter a numerical value." + Fore.WHITE)
             continue
         else:
             return value
 
 
 def insulation(prompt):
+    """
+    Function for user to select the thickness off panel which the room is constructed from.
+    """
     panel_type = [
-        {"Type": "80mm PIR Panel", "U_Value": 0.26},
+        {"Type": "80mm PIR Panel", "U_Value": 0.26}, # panel materials as associated U value.
         {"Type": "100mm PIR Panel", "U_Value": 0.21},
-        {"Type": "150mm PIR Panel", "U_Value": 0.15},
+        {"Type": "150mm PIR Panel", "U_Value": 0.15},  # the thicker to panel the better the U value.
         {"Type": "200mm PIR Panel", "U_Value": 0.10},
     ]
 
@@ -108,11 +120,11 @@ def insulation(prompt):
         try:
             panel = int(input(prompt))
         except ValueError:
-            print("Please select an option between 1 and 4. ")
+            print(Fore.BLUE + "Please select an option between 1 and 4. " + Fore.WHITE)
             continue
         if panel not in range(1, 5):
-            print(
-                "Please select an option between 1 and 4, your number is outside of range."
+            print(Fore.RED + 
+                "Please select an option between 1 and 4, your number is outside of range." + Fore.WHITE
             )
             continue
         elif panel == 1:
@@ -129,79 +141,90 @@ def insulation(prompt):
 
 
 def floor(prompt):
+    """
+    Function to ask user is the room has an insulated floor and apply an appropriate U value to it.
+    """
     yes = {"yes", "y"}
     no = {"no", "n"}
     while True:
         try:
             value = input(prompt)
         except ValueError:
-            print("Please enter yes or no.")
+            print(Fore.BLUE + "Please enter yes or no." + Fore.WHITE)
             continue
-        if value in yes:
-            value = 0.28
+        if value.lower() in yes:
+            value = 0.28  # if the floor is insulated it is given a superior insulation value.
             return value
-        elif value in no:
+        elif value.lower() in no:
             value = 1.0
             return value
         else:
-            print("Has the room got floor insulation? ")
-            print("Please enter yes or no. ")
+            print(Fore.BLUE + "Has the room got floor insulation? ")
+            print("Please enter yes or no. " + Fore.WHITE)
 
 
 class Heat_load:
+    """
+    Class to handle heat loads from people, product and air changes, relevant data and calculations.
+    """
     def __init__(self, source, heat_load):
         self.source = source
         self.heat_load = heat_load
 
     def product_calc():
-        print("Please enter quantity of product entering room in kg: ")
-        product_qty = Dimensions.validator(input)
-        product_temp = temperature("Please enter temperature of product in ºC: ")
+        """
+        Function to intake quantity of product entering the room every 24 hours and calculate heat load.
+        """    
+        print(Fore.BLUE + "Please enter quantity of product entering room in kg: " + Fore.WHITE)
+        product_qty = Dimensions.validator(input)  # validate the quantity entered.
+        product_temp = temperature(Fore.BLUE + "Please enter temperature of product in °C: " + Fore.WHITE) # call function to intake the temperature of product and check it.
         hl1.heat_load = ((product_qty * 1.9) / 3600) + (
             product_qty * (product_temp - room_temp) / 3600
-        )
+        ) # calculation of heat load created by the product.
         return abs(hl1.heat_load)
 
     def people():
-        print(
-            "Are there any people working in this room ?\n" "Please enter yes or no. "
-        )
+        """
+        Function to check if there are people working in the room and calculate any heat generated.
+        """ 
+        print(Fore.BLUE +
+            "Are there any people working in this room ?\n" "Please enter yes or no. " + Fore.WHITE)
         yes = {"yes", "y"}
         no = {"no", "n"}
         while True:
             try:
                 value = input()
             except ValueError:
-                print("Please enter yes or no. ")
+                print(Fore.BLUE + "Please enter yes or no. " + Fore.WHITE)
                 continue
-            if value in yes:
+            if value.lower() in yes:
                 while True:
                     try:
-                        value = int(input("How many people are working in the room ? "))
+                        value = int(input(Fore.BLUE + "How many people are working in the room ? " + Fore.WHITE))
                     except ValueError:
-                        print("Please enter a numerical value for quantity of people.")
+                        print(Fore.RED + "Please enter a numerical value for quantity of people." + Fore.WHITE)
                         continue
                     if value < 0:
-                        print("The value must be a whole, positive number.")
+                        print(Fore.RED + "The value must be a whole, positive number." + Fore.WHITE)
                         continue
                     else:
-                        hl2.heat_load = (value * 6 * 270) / 1000
+                        hl2.heat_load = (value * 6 * 270) / 1000  # calculate the heat generated by person or peopls
                         return hl2.heat_load
                         break
-            elif value in no:
+            elif value.lower() in no:
                 hl2.heat_load = 1.0
                 return hl2.heat_load
                 break
             else:
-                print("Please enter yes or no. ")
+                print(Fore.RED + "Please enter yes or no. " + Fore.WHITE)
 
     def air_changes():
         """
         Function to calculate air infiltration load.
         Intake no. of air changes, room volume and room temperature.
         """
-        print(
-            "Please enter approximate number of door\n" "openings in a 24 hour period. "
+        print(Fore.BLUE + 
+            "Please enter approximate number of door\n" "openings in a 24 hour period. " + Fore.WHITE
         )
         value = Dimensions.validator(input)
         hl3.heat_load = (value * m4.dist * 2 * (20-room_temp))/3600  # calculate air changes in the room 
@@ -224,9 +247,9 @@ class Transmission:
         """
         Function to add all heat loads together and then calculate the required refrigeration duty.
         """
-        total_duty = ((hl1.heat_load + hl2.heat_load + hl3.heat_load + transmission_load) * 1.2) / 14  # add all heat loads, add 20% and divide by 14hours, which is average run time in 24hour day
-        return round(total_duty, 2)
-        print("The kilowatt duty, kW, of the required refrigeration\n" "equipment necessary for this cold store is\n", round(total_duty, 2),"kW")
+        total_duty = ((hl1.heat_load + hl2.heat_load + hl3.heat_load + transmission_load) * 1.2) / 12  # add all heat loads, add 20% and divide by 12hours, which is average run time in 24hour day
+        # return round(total_duty, 2)
+        print(Fore.BLUE + "The kilowatt duty, kW, of the required refrigeration\n" "equipment necessary for this cold store is\n" + Fore.WHITE, round(total_duty, 2),"kW")
 """
 Start of program.
 """
@@ -240,18 +263,19 @@ hl1 = Heat_load("Product", 0.0)
 hl2 = Heat_load("People", 0.0)
 hl3 = Heat_load("Air", 0.0)
 
+print("****Welcome to Cold Store Duty Calculation****")
+print("Please enter the required data to calculate the kilowatt, kW,\n"
+        "duty of the equipment needed to cool the room down to the\n"
+        "required temperature.")
 Dimensions.room("")
-""" print (m4.dist) """
-room_temp = temperature("Please enter temperature of the room in °C : ")
-panel = insulation("Please select panel size from which room is constructed.")
-floor_rating = floor("Is the floor insulated ? \n" "Please enter yes or no. ")
+room_temp = temperature(Fore.BLUE + "Please enter temperature of the room in °C : " + Fore.WHITE)
+panel = insulation(Fore.BLUE + "Please select panel size from which room is constructed. : " + Fore.WHITE)
+floor_rating = floor(Fore.BLUE + "Is the floor insulated ? \n" "Please enter yes or no. : " + Fore.WHITE)
 hl1.heat_load = Heat_load.product_calc()
 hl2.heat_load = Heat_load.people()
 hl3.heat_load = Heat_load.air_changes()
 transmission_load = Transmission.room_load_calc()
-print(transmission_load)
 total_duty = Transmission.total_duty()
-print(total_duty)
 
 
 
