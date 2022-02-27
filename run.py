@@ -1,5 +1,21 @@
 import colorama
+import gspread
 from colorama import Fore
+from google.oauth2.service_account import Credentials
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('calc_data')
+
+room = SHEET.worksheet('room')
+test_data = room.get_all_values()
 
 class Dimensions:
     """
@@ -276,6 +292,7 @@ hl2.heat_load = Heat_load.people()
 hl3.heat_load = Heat_load.air_changes()
 transmission_load = Transmission.room_load_calc()
 total_duty = Transmission.total_duty()
+print(test_data)
 
 
 
