@@ -244,6 +244,7 @@ class Heat_load:
         )
         value = Dimensions.validator(input)
         hl3.heat_load = (value * m4.dist * 2 * (20-room_temp))/3600  # calculate air changes in the room 
+        room.update_cell(9, 4, hl3.heat_load)
         return round(abs(hl3.heat_load,))
 
 
@@ -292,7 +293,7 @@ hl2.heat_load = Heat_load.people()
 hl3.heat_load = Heat_load.air_changes()
 transmission_load = Transmission.room_load_calc()
 total_duty = Transmission.total_duty()
-print(test_data)
+
 
 
 
