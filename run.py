@@ -264,6 +264,7 @@ class Heat_load:
             "Please enter approximate number of door\n" "openings in a 24 hour period. " + Fore.WHITE
         )
         value = Dimensions.validator(input)
+        room.update_cell(7, 5, value)
         hl3.heat_load = (value * m4.dist * 2 * (20-room_temp))/3600  # calculate air changes in the room 
         room.update_cell(9, 3, hl3.heat_load)
         return round(abs(hl3.heat_load,))
@@ -287,7 +288,7 @@ class Transmission:
         Function to add all heat loads together and then calculate the required refrigeration duty.
         """
         total_duty = ((hl1.heat_load + hl2.heat_load + hl3.heat_load + transmission_load) * 1.2) / 12  # add all heat loads, add 20% and divide by 12hours, which is average run time in 24hour day
-        room.update_cell(9, 5, hl3.heat_load)
+        room.update_cell(9, 5, total_duty)
         print(Fore.BLUE + "The kilowatt duty, kW, of the required refrigeration\n" "equipment necessary for this cold store is\n" + Fore.WHITE, round(total_duty, 2),"kW")
 
 """
