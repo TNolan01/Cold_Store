@@ -211,6 +211,7 @@ class Heat_load:
         hl1.heat_load = ((product_qty * 1.9) / 3600) + (
             product_qty * (product_temp - room_temp) / 3600
         ) # calculation of heat load of product
+        room.update_cell(7, 1, room_temp)
         room.update_cell(9, 4, abs(hl1.heat_load))
         return abs(hl1.heat_load)
 
@@ -303,12 +304,14 @@ m6 = Dimensions("Floor", 0.0)
 hl1 = Heat_load("Product", 0.0)
 hl2 = Heat_load("People", 0.0)
 hl3 = Heat_load("Air", 0.0)
-
-print("****Welcome to Cold Store Duty Calculation****")
+print(Fore.CYAN + "**********************************************" + Fore.CYAN)
+print(Fore.BLUE + "****Welcome to Cold Store Duty Calculation****" + Fore.BLUE)
+print(Fore.CYAN + "**********************************************\n" + Fore.CYAN)
 print("Please enter the required data to calculate the kilowatt, kW,\n"
         "duty of the equipment needed to cool the room down to the\n"
-        "required temperature.")
-Dimensions.room("")
+        "required temperature.\n"
+        "Please revert to read me file for further information.\n")
+Dimensions.room('')
 room_temp = temperature(Fore.BLUE + "Please enter temperature of the room in °C : " + Fore.WHITE)
 panel = insulation(Fore.BLUE + "Please select panel size from which room is constructed. : " + Fore.WHITE)
 floor_rating = floor(Fore.BLUE + "Is the floor insulated ? \n" "Please enter yes or no. : " + Fore.WHITE)
