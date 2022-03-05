@@ -485,3 +485,4 @@ print(
     "All data uploaded to the Google Sheet\n"
     "calc_data. Information can be printed from there.\n"
     "Thank you.")
+
