@@ -481,4 +481,7 @@ total_duty = Transmission.total_duty()
 print(
     "All data uploaded to the Google Sheet\n"
     "calc_data. Information can be printed from there.\n"
+    "Click Run Program to restart."
+    "Google Sheet is over written each time "
+    "the program is run."
     "Thank you.")
