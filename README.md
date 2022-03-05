@@ -168,3 +168,22 @@ I have used colorama to add some color changes to the text.</p>
 
 ## Testing: <div id="testing"></div> 
 <br>
+
+
+### Cloning:
+
+
+[Click here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
+
+1. Log in to GitHub and locate the [GitHub Repository] https://github.com/TNolan01/weather
+2. Under the repository name, click "Code".
+3. To clone the repository using HTTPS. Under "HTTPS" copy the link.
+4. Go to your local terminal with git installed
+5. Change the current working directory to the location where you want the cloned directory to be created/located.
+6. Type `git clone` and then you paste in the URL you copied in Step 3.
+
+  ```
+  $ git clone https://github.com/TNolan01/weather.git
+  ```
+
+7. Press Enter. Your local clone will be created.

@@ -35,16 +35,16 @@ class Dimensions:
                 value = float(input())
             except ValueError:
                 print(
-                    Fore.RED
-                    + "Sorry, please enter a numerical value.\n"
-                    + Fore.WHITE
+                    Fore.RED + "Sorry, please"
+                    " enter a numerical "
+                    "value.\n" + Fore.WHITE
                 )
                 continue
             if value < 0:
                 print(
-                    Fore.RED
-                    + "Sorry, you must enter a positive numerical value.\n"
-                    + Fore.WHITE
+                    Fore.RED + "Sorry, you must"
+                    "enter a positive numerical"
+                    "value.\n" + Fore.WHITE
                 )
                 continue
             else:
@@ -57,23 +57,23 @@ class Dimensions:
         also.
         """
         print(
-            Fore.BLUE
-            + "Please enter the length of the coldroom in metres : "
-            + Fore.WHITE
+            Fore.BLUE + "Please enter"
+            " the length of the coldroom"
+            " in metres : " + Fore.WHITE
         )
         m1.dist = Dimensions.validator(self)
         room.update_cell(3, 3, m1.dist)
         print(
-            Fore.BLUE
-            + "Please enter the width of the coldroom in metres : "
-            + Fore.WHITE
+            Fore.BLUE + "Please enter"
+            " the width of the coldroom"
+            " in metres : " + Fore.WHITE
         )
         m2.dist = Dimensions.validator(self)
         room.update_cell(3, 2, m2.dist)
         print(
-            Fore.BLUE
-            + "Please enter the height of the coldroom in metres : "
-            + Fore.WHITE
+            Fore.BLUE + "Please enter the height "
+            "of the coldroom in "
+            "metres : " + Fore.WHITE
         )
         m3.dist = Dimensions.validator(self)
         room.update_cell(3, 1, m3.dist)
@@ -99,9 +99,9 @@ class Dimensions:
             Fore.BLUE + "metres." + Fore.WHITE,
         )
         Dimensions.yes_no(
-            Fore.BLUE
-            + "Are entered values correct, please enter yes or no ? \n"
-            + Fore.WHITE
+            Fore.BLUE + "Are entered "
+            "values correct, please enter"
+            " yes or no ? \n" + Fore.WHITE
         )
         return
 
@@ -135,15 +135,14 @@ class Dimensions:
                 break
             elif value.lower() in no:
                 Dimensions.room(
-                    Fore.BLUE +
-                    "Please input correct measurements."
-                    + Fore.WHITE
+                    Fore.BLUE + "Please input"
+                    "correct measurements." + Fore.WHITE
                 )
                 break
             else:
-                print(Fore.RED +
-                      "Please respond with a yes or no answer."
-                      + Fore.WHITE)
+                print(Fore.RED + "Please respond "
+                                 "with a yes or no "
+                                 "answer." + Fore.WHITE)
 
     def volume(length, height, width):
         """
@@ -217,16 +216,16 @@ def insulation(prompt):
         try:
             panel = int(input(prompt))
         except ValueError:
-            print(Fore.BLUE +
-                  "Please select an option between 1 and 4. "
-                  + Fore.WHITE)
+            print(Fore.BLUE + "Please select"
+                              " an option between"
+                              " 1 and 4. " + Fore.WHITE)
             continue
         if panel not in range(1, 5):
             print(
-                Fore.RED
-                + "Please select an option between 1 and 4"
-                ", your number is outside of range."
-                + Fore.WHITE
+                Fore.RED + "Please select"
+                "an option between 1 and 4"
+                ", your number is"
+                "outside of range." + Fore.WHITE
             )
             continue
         elif panel == 1:
@@ -295,17 +294,16 @@ class Heat_load:
         24 hours and calculate heat load.
         """
         print(
-            Fore.BLUE
-            + "Please enter quantity of product entering room in kg: "
-            + Fore.WHITE
+            Fore.BLUE + "Please enter"
+            " quantity of product entering"
+            " room in kg: " + Fore.WHITE
         )
         # validate the quantity entered.
         product_qty = Dimensions.validator(input)
         room.update_cell(7, 2, product_qty)
         product_temp = temperature(
-            Fore.BLUE +
-            "Please enter temperature of product in °C: "
-            + Fore.WHITE
+            Fore.BLUE + "Please enter the"
+            " temperature of product in °C: " + Fore.WHITE
         )  # call function to intake the temperature of product and check it.
         room.update_cell(7, 3, product_temp)
         hl1.heat_load = ((product_qty * 1.9) / 3600) + (
@@ -338,24 +336,23 @@ class Heat_load:
                     try:
                         value = int(
                             input(
-                                Fore.BLUE
-                                + "How many people are working in the room ? "
-                                + Fore.WHITE
+                                Fore.BLUE + "How many people "
+                                "are working in the "
+                                "room ? " + Fore.WHITE
                             )
                         )
                     except ValueError:
                         print(
-                            Fore.RED
-                            + "Please enter a numerical value for"
-                            "quantity of people."
-                            + Fore.WHITE
+                            Fore.RED + "Please enter a "
+                            "numerical value for quantity"
+                            " of people." + Fore.WHITE
                         )
                         continue
                     if value < 0:
                         print(
-                            Fore.RED
-                            + "The value must be a whole, positive number."
-                            + Fore.WHITE
+                            Fore.RED + "The value must"
+                            "be a whole, positive"
+                            "number." + Fore.WHITE
                         )
                         continue
                     else:
@@ -431,10 +428,10 @@ class Transmission:
         """
         room.update_cell(9, 5, total_duty)
         print(
-            Fore.BLUE +
-            "The kilowatt duty, kW, of the required refrigeration\n"
-            "equipment necessary for this cold store is\n"
-            + Fore.WHITE,
+            Fore.BLUE + "The kilowatt duty"
+            ", kW, of the required refrigeration\n"
+            "equipment necessary for this"
+            "cold store is\n" + Fore.WHITE,
             round(total_duty, 2),
             "kW",
         )
@@ -454,9 +451,9 @@ hl2 = Heat_load("People", 0.0)
 hl3 = Heat_load("Air", 0.0)
 print(Fore.CYAN + "**********************************************" + Fore.CYAN)
 print(Fore.BLUE + "****Welcome to Cold Store Duty Calculation****" + Fore.BLUE)
-print(Fore.CYAN +
-      "**********************************************\n"
-      + Fore.CYAN)
+print(Fore.CYAN + "*****************"
+                  "********************"
+                  "*********\n" + Fore.CYAN)
 print(
     "Please enter the required data to calculate the kilowatt, kW,\n"
     "duty of the equipment needed to cool the room down to the\n"
@@ -468,14 +465,14 @@ room_temp = temperature(
     Fore.BLUE + "Please enter temperature of the room in °C : " + Fore.WHITE
 )
 panel = insulation(
-    Fore.BLUE
-    + "Please select panel size from which room is constructed. : "
-    + Fore.WHITE
+    Fore.BLUE + "Please select"
+    " panel size from which room"
+    " is constructed. : " + Fore.WHITE
 )
 floor_rating = floor(
-    Fore.BLUE + "Is the floor insulated ? \n"
-    "Please enter yes or no. : "
-    + Fore.WHITE)
+    Fore.BLUE + "Is the floor"
+    " insulated ? \n" "Please enter"
+    " yes or no. : " + Fore.WHITE)
 hl1.heat_load = Heat_load.product_calc()
 hl2.heat_load = Heat_load.people()
 hl3.heat_load = Heat_load.air_changes()
@@ -485,4 +482,3 @@ print(
     "All data uploaded to the Google Sheet\n"
     "calc_data. Information can be printed from there.\n"
     "Thank you.")
-
