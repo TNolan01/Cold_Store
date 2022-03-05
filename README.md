@@ -170,6 +170,12 @@ I have used colorama to add some color changes to the text.</p>
 
 ## Testing: <div id="testing"></div> 
 <br>
+<p>The program was tested for error handling.</p>
+
+
+
+
+
 
 [Back to Contents](#contents) 
 <br>

@@ -223,9 +223,9 @@ def insulation(prompt):
         if panel not in range(1, 5):
             print(
                 Fore.RED + "Please select"
-                "an option between 1 and 4"
+                " an option between 1 and 4"
                 ", your number is"
-                "outside of range." + Fore.WHITE
+                " outside of range." + Fore.WHITE
             )
             continue
         elif panel == 1:
