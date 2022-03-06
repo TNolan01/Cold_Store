@@ -35,37 +35,36 @@
 <br>
 
 
-
 ## Project Scope: <div id="project_scope"></div> 
-<p>The scope of this project is to create a simple command line driven program written in Python. I have written Python program to calculate the power requirement in kilowatts of the refrigeration equipment needed for cold and freezer storage rooms.</p>
+<p>The scope of this project is to create a simple command line driven program written in Python. I have written a Python program to calculate the power requirement in kilowatts of the refrigeration equipment needed for cold and freezer storage rooms.</p>
 
-<p>The program intakes a number of variables from the user to make this calculation. The following list main criteria required to work on the refrigeration duty.</p>
+<p>The program intakes a number of variables from the user to make this calculation. The following list main criteria required to work out the refrigeration duty.</p>
 
 ### Data Required:
 <br>
 <span style="color: orange">Length, width and height of the walls:</span> 
-<p>The dimensions of the refrigerated room are required in order to calculate the volume of the room and surface area of the walls.</p>
+<p>The dimensions of the refrigerated room are required to calculate the volume of the room and surface area of the walls.</p>
 <br>
 <span style="color: orange">Thickness of the insulated panel from which the room is constructed:</span> 
-<p>The user has numerical choice 1 to 4 to choice the type of insulated panel from which the room is constructed. Each choice has an associated U valve for its insulation properites. The lower the thicker the insulation, the lower the U value and hence the lower the amount of energy required to achieve the rooms target temperature.</p>
+<p>The user has numerical choice of 1 to 4 to choose the type of insulated panel from which the room is constructed. Each choice has an associated U valve for its insulation properties. The thicker the insulation, the lower the U value and hence the lower the amount of energy required to achieve the rooms target temperature.</p>
 <br>
 <span style="color: orange">Target temperature:</span> 
-<p>The target temperature is the temperature we want the room to achieve and hold. The temperature range for chill room is +2 to +4°C, the target temperature for a freezer room would be -18 to -20°C. For particular applications or storage the target temperature can span between those two figures. The lower the target temperature is the higher the required power duty will be.</p>
+<p>The target temperature is the temperature we want the room to achieve and hold. The temperature range for chill room is +2 to +4°C, the target temperature for a freezer room would be between -18 to -20°C. For particular applications or types of storage the target temperature can span between those two figures. The lower the target temperature is the higher the required power duty will be.</p>
 <br>
 <span style="color: orange">Floor insulation:</span> 
-<p>The user is offered a yes / no choice, is there insulation under the floor? If the floor has insulation it recieves a higher U value.</p>
+<p>The user is offered a yes / no choice, is there insulation under the floor? If the floor has insulation it receives a better U value.</p>
 <br>
 <span style="color: orange">Quantity of product:</span> 
 <p>The quantity of product entering the refrigerated room in a 24 hour period is necessary as it forms a large part of the heat load. This is numerical figure and represents the quantity in kilograms </p>
 <br>
 <span style="color: orange">Temperature of the product:</span> 
-<p>The entry temperature of the product will form the largest heat input value. The higher the temperature of the product the harder the refrigeration equipment will be required to work and ergo the higher power required.</p>
+<p>The entry temperature of the product will form the large heat input value. The higher the temperature of the product the harder the refrigeration equipment will be required to work and ergo the higher power required.</p>
 <br>
 <span style="color: orange">Are there people in the room?:</span> 
-<p>Another potentially significant source of heat is the presence of people working inside the room walls and generating additional heat which needs to be countered.</p>
+<p>Another potentially significant source of heat is the presence of people working inside the room. The heat generated needs to be countered.</p>
 <br>
 <span style="color: orange">Number of door openings:</span> 
-<p>The greater the number of door openings the larger the number of air changes. Refrigerated air leaving the room during door openings will be replaced with warm ambient air which will need to be chilled to the meet the target temperature, this will effect the required. A refrigerated room which experiences multiple loadings and unloadings during the day will need to work harder to replace the lost cold air. </p>
+<p>The greater the number of door openings the larger the number of air changes. Refrigerated air leaving the room during door openings will be replaced with warm ambient air which will need to be chilled to the meet the target temperature, this will affect the required kW duty. A refrigerated room which experiences multiple loadings and unloadings during the day will need to work harder to replace the lost frigid air. </p>
 <br>
 
 
@@ -89,8 +88,8 @@ The target audience for this program would include the following people:
 <p> The program is designed to calculate the kilowatt load of the refrigeration plant, equipment, necessary to cool or freeze product(s) from a particular entry temperature to an ideal holding temperature. With this information a user can do the following </p>
 <ol>
 <li> Correctly size the necessary refrigeration equipment.</li>
-<li> Design the most energy efficent room structure by running 'mock' room details to see how the construction of the room effects power requirements.</li>
-<li> Help the electrical engineers size the required cabling and electrical installation requirements. </li>
+<li> Design the most energy efficient room structure by running 'mock' room details to see how the construction of the room effects power requirements.</li>
+<li> Help the electrical engineers size the required cabling and electrical installation requirements to match the duty. </li>
 <li> Calculate running costs and potential energy savings.</li>
 </ol> 
 
@@ -101,9 +100,11 @@ The target audience for this program would include the following people:
 
 ## Project Design: <div id="design"></div>
 <br>
-<p>The project is a command line based program run running in a compact terminal window. As the program is designed to be functional and practical.
-I have used colorama to add some color changes to the text.</p>
-<p>In instances where the user has entered and invalid input the text which prompts them to enter a value of the correct type or inside the correct is red in color.</p>
+<p>The project is a command line-based program run running in a compact terminal window. As the program is designed to be functional and practical design stylings are limited on this project.</p>
+<p>I have used colorama to add some color changes to the text.</p>
+<p>In instances where the user has entered and invalid input the text which prompts them to enter a value of the correct is red in color.</p>
+<p>The text to prompt the user for input is blue.</p>
+<br>
 <span style="color: orange">Image of intro screen:</span> 
 <br>
 <p align ="center">
@@ -113,7 +114,7 @@ I have used colorama to add some color changes to the text.</p>
 
 ## Program Structure: <div id="structure"></div>
 <br>
-<p>The program follows a step through process. Asking the user for data, verifying the data and then using the entered data in the appropriate calculation.</p>
+<p>The program follows a step through process. Asking the user for data, verifying the data, and then using the entered data in the appropriate calculation.</p>
 <br>
 
 #### Path of program:
@@ -122,22 +123,22 @@ I have used colorama to add some color changes to the text.</p>
 <li>Length of the coldroom in metres.</li>
 <li>Width of the coldroom in metres.</li>
 <li>Height of the coldroom in metres.</li>
-<li>The program then displays the entered data back to the user to confirm is its correct. If the user enters yes then the program continues, if not the user is asked to input the correct data.</li>
+<li>The program then displays the entered data back to the user to confirm if it is correct. If the user enters yes then the program continues, if not the user is asked to input the correct measurements.</li>
 </ul>
 <br>
 <p align ="center">
 <img title="intro" alt="screen shot of intro screen" src="images/readme_images/data_entry.png">
 </p>
 <ul>
-<li>If the user confirms the data entered is correct then the program calculates room volume and surface area of the the roof, walls and ceilings.</li>
+<li>If the user confirms the data entered is correct then the program calculates room volume and surface area of the roof, walls and ceilings.</li>
 </ul>
 <br>
 <p align ="center">
 <img title="step2" alt="screen shot of step 2 screen" src="images/readme_images/step2.png"></p>
 <br>
 <ul>
-<li>The user now inputs the temperature in celsius which is required in the room. </li>
-<li>Users are presented with the four choices for the insulated panel of which the room is constructed. The program looks for an option between 1 and 4.</li>
+<li>The user now inputs the temperature in Celsius which is required in the room. </li>
+<li>User is presented with the four choices for the insulated panel of which the room is constructed. The program looks for an option between 1 and 4.</li>
 <li>Once the panel size is selected the user then confirms if the room has an insulated floor with a yes or no selection.</li>
 </ul>
 <br>
@@ -147,19 +148,19 @@ I have used colorama to add some color changes to the text.</p>
 <ul>
 <li>Now the program looks for details of the product entering the room. The user enters the quantity of the product entering the room every 24 hours and the entry temperature of that product.</li>
 <li>The user then must confirm if the room has people working in it, yes or no. If the user submits 'yes' then they will be asked to enter the number of people.</li> 
-<li>Next, the program asks for an approximation for the number of door openings in a 24 hour period.</li>
+<li>Next, the program asks for an approximation for the number of door openings in a 24-hour period.</li>
 </ul>
 <br>
 <p align ="center">
 <img title="step4" alt="screen shot of step 4 screen" src="images/readme_images/step4.png"></p>
 <br>
 <ul>
-<li>Once all details are entered the program returns an refrigeration duty loading in kilowatts based on the entered data. The program also creates a Google Sheet with the key data entered and the calculations made.</li>
+<li>Once all details are entered the program returns a refrigeration duty loading in kilowatts based on the entered data. The program also updates a Google Sheet with the key data entered and the calculations made during the process.</li>
 </ul>
 <p align ="center">
 <img title="step5" alt="screen shot of step 5 screen" src="images/readme_images/step5.png"></p>
 <br>
-<span style="color: orange">Image of Google Sheet:</span> 
+<span style="color: orange">Sample image of Google Sheet:</span> 
 <br>
 
 ![google_sheet](/images/readme_images/google_sheet.png)
@@ -170,7 +171,7 @@ I have used colorama to add some color changes to the text.</p>
 
 ## Testing: <div id="testing"></div> 
 <br>
-<p>The program was tested for error handling by entering incorrect values at the user imput stage.</p>
+<p>The program was tested for error handling by entering incorrect values at the user input stage.</p>
 <span style="color: orange">Inputting a letter, L, instead of a numerical value:</span> 
 <br>
 
@@ -218,7 +219,7 @@ I have used colorama to add some color changes to the text.</p>
 ## Validation: <div id="validate"></div> 
 <br>
 <p>The program was validated using PEP8 Online Python validator.</p>
-<br>
+
 
 http://pep8online.com
 <br>
@@ -227,15 +228,91 @@ The program was free of errors. There was one warning message which is addressed
 <br>
 <p>In addition as part of the validation and testing process I carried out two tests, one based on a room designed as a chill room and the second based on a freezer room.</p>
 <br>
-<h3 style="color: orange">Chillroom Test:</h3>
-<p>The criteria for the Chillroom Test is as follows:</p>
+<h3 style="color: orange">Chill Room Test:</h3>
+<p>The criteria for the chill room Test is as follows:</p>
+<ul>
+<li>Room Height at 4.0 metres</li>
+<li>Room Width at 6.2 metres</li>
+<li>Room Length at 5.5 metres</li>
+<li>No floor insulation</li>
+<li>Temperature of the room at 4°C</li>
+<li>Product quantity at 250kg</li>
+<li>Product temperature at 16°C</li>
+<li>No people working in the room</li>
+<li>6no. door openings in a day</li>
+</ul>
+<p> I carried out three tests with only variable changing being the panel size of which the room is constructed.</p>
+<ol>
+<li>Test 1 with 80mm PIR Panels</li>
+<li>Test 2 with 150mm PIR Panels</li>
+<li>Test 3 with 200mm PIR Panels</li>
+</ol>
 
+<br>
+<span style="color: orange">Google Sheet with 80mm Panels:</span> 
+<br>
+
+![test1_criteria1](/images/testing/test1c1.png)
+<br>
+<span style="color: orange">Google Sheet with 150mm Panels:</span> 
+<br>
+
+![test1_criteria2](/images/testing/test1c2.png)
+<br>
+<span style="color: orange">Google Sheet with 200mm Panels:</span> 
+<br>
+
+![test1_criteria3](/images/testing/test1c3.png)
+<br>
+<p>We can see the duty required declines on each test as the panel size increases and hence room becomes more energy efficient, requiring less duty to run.</p>
+
+<br>
+<h3 style="color: orange">Freezer Room Test:</h3>
+<p>The criteria for the freezer room Test is as follows:</p>
+<ul>
+<li>Room Height at 4.12 metres</li>
+<li>Room Width at 8.0 metres</li>
+<li>Room Length at 4.7 metres</li>
+<li>No floor insulation</li>
+<li>Temperature of the room at -18°C</li>
+<li>Product quantity at 300kg</li>
+<li>Product temperature at 6°C</li>
+<li>No people working in the room</li>
+<li>4no. door openings in a day</li>
+</ul>
+<p> Again, I carried out three tests changing only the panel size of which the room is constructed.</p>
+<ol>
+<li>Test 1 with 100mm PIR Panels</li>
+<li>Test 2 with 150mm PIR Panels</li>
+<li>Test 3 with 200mm PIR Panels</li>
+</ol>
+<br>
+<span style="color: orange">Google Sheet with 100mm Panels:</span> 
+<br>
+
+![test2_criteria1](/images/testing/test2c1.png)
+<br>
+<span style="color: orange">Google Sheet with 150mm Panels:</span> 
+<br>
+
+![test2_criteria2](/images/testing/test2c2.png)
+<br>
+<span style="color: orange">Google Sheet with 200mm Panels:</span> 
+<br>
+
+![test2_criteria3](/images/testing/test2c3.png)
+<br>
+<p>Again, we can see the duty required declines when the panel size increases. The duty required being a lot higher than the chill room test as the freezer room requires more power to bring product from 6°C to -18°C.</p>
+<br>
+
+[Back to Contents](#contents) 
+<br>
 
 ## Bugs & Issues: <div id="bugs"></div> 
 <br>
 <p>The initial validation process with PEP 8 produced numerous E501 errors. This error was generated by the length of multiple lines of code in the program.</p>
-<p>These faults were addressed with the re-factoring of the code, however, this re-factoring generated multple W503 warnings - 'line break before binary operator'. The issue being that '+' in the 'Fore +' which is a formating option used as part of the colorama package to add color to certain text was seen as a 'binary operator'</p>
-<p>Spliting a line of code with the '+' at the end or the start of a line would generate a warning.</p>
+<p>These faults were addressed with the re-factoring of the code, however, this re-factoring generated multiple W503 warnings - 'line break before binary operator'. The issue being that '+' in the 'Fore +' which is a formatting option used as part of the Colorama package to add color to certain text was seen as a 'binary operator'.</p>
+<p>Splitting a line of code with the '+' at the end or the start of a line would generate a warning.</p>
 <br>
 <span style="color: orange">Sample of initial code which generated the error:</span> 
 <br>
@@ -245,7 +322,7 @@ The program was free of errors. There was one warning message which is addressed
 
 <p>Based on this warning all relevant lines containing Fore code were altered and split at different points which eliminated multiple W503 and W504 warnings.
 
-<p>There is 1no. W503 warning remaining. This relates to a line of code which had to be split due to its length generating an E501 error. As the line was split inline with Python best practises in terms of readability, with the '+' operator to the front of the line, presenting the relevant calculation code more clearly and having researched the warning I dont believe it to be an issue.</p>
+<p>There is 1no. W503 warning remaining. This relates to a line of code which had to be split due to its length generating an E501 error. As the line was split in line with Python best practices in terms of readability, with the '+' operator to the front of the line, presenting the relevant calculation code more clearly. Having researched the warning I dont believe it to be an issue.</p>
 
 https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator
 <br>
@@ -254,10 +331,6 @@ https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-
 <br>
 ![pep8_results](/images/readme_images/pep8_results.png)
 <br>
-
-
-
-
 
 [Back to Contents](#contents) 
 <br>
@@ -316,3 +389,34 @@ Deployment of this project is carried out with  Heroku, https://www.heroku.com .
 
 [Back to Contents](#contents) 
 <br>
+
+
+## Technologies Used: <div id="tech"><div>
+<p>The following technologies and libraries were used.</p>
+<ul>
+<li>GITHUB</li>
+<li>GITPOD</li>
+<li>Heroku</li>
+</ul>
+<p>The program was written in Python with the following libraries.</p>
+<ul>
+<li>Colorama</li>
+<li>G Spread, Google Sheets</li>
+<li>Google Auth</li>
+<li>Coded using the Code Institute Python Essentials Template</li>
+</ul>
+
+<br>
+
+[Back to Contents](#contents) 
+<br>
+## Project Credits: <div id="credits"><div>
+<p>The following resources were used in the development of the program and require credit.</p>
+<ul>
+<li>Code Institute 'Love Sandwiches' walkthrough</li>
+<li>Stack Overflow</li>
+<li>ThePythonCode.com</li>
+</ul>
+<br>
+
+[Back to Contents](#contents) 

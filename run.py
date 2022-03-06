@@ -411,7 +411,7 @@ class Transmission:
             m6.dist * floor_rating * room_temp * 24
         ) / 1000  # transmission load for floor
         value = ceil_wall + floor  # complete transmission load for entire room
-        room.update_cell(9, 5, abs(value))
+        room.update_cell(9, 4, abs(value))
         return abs(value)
 
     def total_duty():
