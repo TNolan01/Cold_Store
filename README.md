@@ -170,12 +170,47 @@ I have used colorama to add some color changes to the text.</p>
 
 ## Testing: <div id="testing"></div> 
 <br>
-<p>The program was tested for error handling.</p>
+<p>The program was tested for error handling by entering incorrect values at the user imput stage.</p>
+<span style="color: orange">Inputting a letter, L, instead of a numerical value:</span> 
+<br>
 
+![testing_1](/images/testing/testing_1.png)
+<br>
+<span style="color: orange">Inputting a number, 8, instead of a yes or no:</span> 
+<br>
 
+![testing_2](/images/testing/testing_2.png)
+<br>
+<span style="color: orange">Inputting a letter, t, instead of numerical value:</span> 
+<br>
 
+![testing_3](/images/testing/testing_3.png)
+<br>
+<span style="color: orange">Inputting a letter, r, and a number, 8, instead of number in the range 1 to 4:</span> 
+<br>
 
+![testing_4](/images/testing/testing_4.png)
+<br>
+<span style="color: orange">Inputting a letter, S, and a symbol, =, instead of positive numerical value:</span> 
+<br>
 
+![testing_5](/images/testing/testing_5.png)
+<br>
+<span style="color: orange">Inputting letters, H and x, instead of a numerical value:</span> 
+<br>
+
+![testing_6](/images/testing/testing_6.png)
+<br>
+<span style="color: orange">Inputting letters, P and GGG, instead of a yes or no value. Entering letter E and the ? symbol instead of a whole positive number:</span> 
+<br>
+
+![testing_7](/images/testing/testing_7.png)
+<br>
+<span style="color: orange">Inputting letters, JKLM, and symbols, ..., instead of a positive numerical value:</span> 
+<br>
+
+![testing_8](/images/testing/testing_8.png)
+<br>
 
 [Back to Contents](#contents) 
 <br>
@@ -187,10 +222,13 @@ I have used colorama to add some color changes to the text.</p>
 
 http://pep8online.com
 <br>
-
+ 
 The program was free of errors. There was one warning message which is addressed in the [Bugs & Issues section](#bugs)
 <br>
-
+<p>In addition as part of the validation and testing process I carried out two tests, one based on a room designed as a chill room and the second based on a freezer room.</p>
+<br>
+<h3 style="color: orange">Chillroom Test:</h3>
+<p>The criteria for the Chillroom Test is as follows:</p>
 
 
 ## Bugs & Issues: <div id="bugs"></div> 

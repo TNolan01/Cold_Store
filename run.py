@@ -43,8 +43,8 @@ class Dimensions:
             if value < 0:
                 print(
                     Fore.RED + "Sorry, you must"
-                    "enter a positive numerical"
-                    "value.\n" + Fore.WHITE
+                    " enter a positive numerical"
+                    " value.\n" + Fore.WHITE
                 )
                 continue
             else:
@@ -352,7 +352,7 @@ class Heat_load:
                         print(
                             Fore.RED + "The value must"
                             "be a whole, positive"
-                            "number." + Fore.WHITE
+                            " number." + Fore.WHITE
                         )
                         continue
                     else:
@@ -481,7 +481,7 @@ total_duty = Transmission.total_duty()
 print(
     "All data uploaded to the Google Sheet\n"
     "calc_data. Information can be printed from there.\n"
-    "Click Run Program to restart."
     "Google Sheet is over written each time "
-    "the program is run."
-    "Thank you.")
+    "the program is run.\n"
+    "Click Run Program to restart.\n")
+print("Thank you.")
